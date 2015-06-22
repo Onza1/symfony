@@ -1,0 +1,9 @@
+eeckman_events_homepage:
+    path:     /events
+    defaults: { _controller: EeckmanEventsBundle:Frontend/Events:index }
+
+eeckman_events_details:
+    path:     /events/{idEvent}
+    defaults: { _controller: EeckmanEventsBundle:Frontend/Events:detailsEvent }
+    requirements:
+        page: \+d

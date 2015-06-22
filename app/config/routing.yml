@@ -1,0 +1,42 @@
+eeckman_certificate:
+    resource: "@EeckmanCertificateBundle/Resources/config/routing.yml"
+    prefix:   /
+
+eeckman_transports:
+    resource: "@EeckmanTransportsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+eeckman_coverage:
+    resource: "@EeckmanCoverageBundle/Resources/config/routing.yml"
+    prefix:   /
+
+eeckman_policy:
+    resource: "@EeckmanPolicyBundle/Resources/config/routing.yml"
+    prefix:   /
+
+eeckman_address:
+    resource: "@EeckmanAddressBundle/Resources/config/routing.yml"
+    prefix:   /
+
+homepage_route:
+    path:   /
+    defaults: { _controller: FOSUserBundle:Security:login }
+    prefix:   login
+
+
+eeckman_user:
+    resource: "@EeckmanUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+eeckman_events:
+    resource: "@EeckmanEventsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+eeckman_object:
+    resource: "@EeckmanObjectBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+

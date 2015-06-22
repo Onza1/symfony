@@ -1,0 +1,40 @@
+{% extends ':Account:layout.html.twig' %}
+{% block title %}Mes événements{% endblock title %}
+{% block body %}
+
+    <div class="page-header"><h1>Mes événements</h1></div>
+    <div id="accordion" class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a href="#collapseOne" data-target="#collapseOne" data-toggle="collapse">Sélection de l'événement</a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    {% for  event in entities %}
+                        <a href="{{ app.request.requestUri ~ '/' ~ event.id }}">
+                        <div class="col-md-3">
+                            <div class="panel panel-default col-md-12 no-gutter event-item">
+                                <div class="col-md-6">
+                                    {{ event.shortname }}
+                                </div>
+                                <div class="col-md-6">
+                                    <img class="event-thumbnail" src="{{ asset(event.logo) }}" />
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+{% endblock %}

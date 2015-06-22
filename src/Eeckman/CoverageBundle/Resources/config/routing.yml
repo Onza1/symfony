@@ -1,0 +1,3 @@
+eeckman_coverage_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: EeckmanCoverageBundle:Default:index }

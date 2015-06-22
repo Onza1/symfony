@@ -1,0 +1,3 @@
+eeckman_certificate_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: EeckmanCertificateBundle:Default:index }

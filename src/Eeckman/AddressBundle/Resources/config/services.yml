@@ -1,0 +1,4 @@
+services:
+#    eeckman_address.example:
+#        class: Eeckman\AddressBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,3 @@
+eeckman_object_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: EeckmanObjectBundle:Default:index }

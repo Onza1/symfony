@@ -1,0 +1,4 @@
+services:
+#    eeckman_object.example:
+#        class: Eeckman\ObjectBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

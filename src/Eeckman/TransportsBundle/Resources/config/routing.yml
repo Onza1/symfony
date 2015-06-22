@@ -1,0 +1,3 @@
+eeckman_transports_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: EeckmanTransportsBundle:Default:index }

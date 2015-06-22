@@ -1,0 +1,4 @@
+services:
+#    eeckman_transports.example:
+#        class: Eeckman\TransportsBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

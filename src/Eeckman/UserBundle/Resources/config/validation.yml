@@ -1,0 +1,89 @@
+# Note: We still want to validate the email
+# See FOSUserBundle/Resources/config/validation/orm.xml to understand
+# the UniqueEntity constraint that was originally applied to both
+# username and email fields
+#
+# As you can see, we are only applying the UniqueEntity constraint to
+# the email field and not the username field.
+FOS\UserBundle\Model\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+             fields: email
+             errorPath: email
+             message: fos_user.email.already_used
+             groups: [ "EeckmanRegistration", "EeckmanProfile" ]
+
+    properties:
+        email:
+            - NotBlank:
+                message: fos_user.email.blank
+                groups: [ "EeckmanRegistration", "EeckmanProfile" ]
+            - Length:
+                min: 2
+                minMessage: fos_user.email.short
+                max: 255
+                maxMessage: fos_user.email.long
+                groups: [ "EeckmanRegistration", "ResetPassword" ]
+            - Email:
+                message: fos_user.email.invalid
+                groups: [ "EeckmanRegistration", "EeckmanProfile" ]
+        plainPassword:
+            - NotBlank:
+                message: fos_user.password.blank
+                groups: [ "EeckmanRegistration", "ResetPassword", "ChangePassword" ]
+            - Length:
+                min: 2
+                minMessage: fos_user.password.blank
+                groups: [ "EeckmanRegistration", "EeckmanProfile", "ResetPassword", "ChangePassword"]
+
+FOS\UserBundle\Model\Group:
+    properties:
+        name:
+            - NotBlank:
+                message: fos_user.group.blank
+                groups: [ "EeckmanRegistration" ]
+            - Length:
+                min: 2
+                minMessage: fos_user.group.short
+                max: 255
+                maxMessage: fos_user.group.long
+                groups: [ "EeckmanRegistration" ]
+
+FOS\UserBundle\Propel\User:
+    properties:
+        email:
+            - NotBlank:
+                message: fos_user.email.blank
+                groups: [ "EeckmanRegistration", "EeckmanProfile" ]
+            - Length:
+                min: 2
+                minMessage: fos_user.email.short
+                max: 255
+                maxMessage: fos_user.email.long
+                groups: [ "EeckmanRegistration", "ResetPassword" ]
+            - Email:
+                message: fos_user.email.invalid
+                groups: [ "EeckmanRegistration", "EeckmanProfile" ]
+
+        plainPassword:
+            - NotBlank:
+                message: fos_user.password.blank
+                groups: [ "EeckmanRegistration", "ResetPassword", "ChangePassword" ]
+            - Length:
+                min: 2
+                minMessage: fos_user.password.blank
+                groups: [ "EeckmanRegistration", "EeckmanProfile", "ResetPassword", "ChangePassword"]
+
+
+FOS\UserBundle\Propel\Group:
+    properties:
+        name:
+            - NotBlank:
+                message: fos_user.group.blank
+                groups: [ "EeckmanRegistration" ]
+            - Length:
+                min: 2
+                minMessage: fos_user.group.short
+                max: 255
+                maxMessage: fos_user.group.long
+                groups: [ "EeckmanRegistration" ]

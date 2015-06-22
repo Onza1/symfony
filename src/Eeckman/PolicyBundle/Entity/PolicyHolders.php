@@ -23,7 +23,7 @@ class PolicyHolders
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="Eeckman\UserBundle\Entity\Contact")
+     * @ORM\ManyToOne(targetEntity="Eeckman\UserBundle\Entity\Contacts")
      * @ORM\JoinColumn(name="ID_Contact", referencedColumnName="id")
      */
     private $iDContact;

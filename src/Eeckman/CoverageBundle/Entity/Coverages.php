@@ -101,7 +101,7 @@ class Coverages
     /**
      *
      * @ORM\ManyToOne(targetEntity="ValueTypes")
-     * @JoinColumn(name="ID_ValueType", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="ID_ValueType", referencedColumnName="id", nullable=true)
      */
     private $iDValueType;
 

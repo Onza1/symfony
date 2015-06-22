@@ -30,7 +30,7 @@ class CoveragesTransports
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="Coverage")
+     * @ORM\ManyToOne(targetEntity="Coverages")
      * @ORM\JoinColumn(name="ID_Coverage", referencedColumnName="id", nullable=true)
      */
     private $iDCoverage;

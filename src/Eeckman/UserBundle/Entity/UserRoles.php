@@ -16,7 +16,7 @@ class UserRoles
     /**
      * @var integer
      *
-     * @ORM\Column(name="ID_UserRole", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */

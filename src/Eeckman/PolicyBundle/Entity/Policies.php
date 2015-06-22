@@ -36,9 +36,9 @@ class Policies
     private $validUntil;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Currency", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Eeckman\CoverageBundle\Entity\Currencies")
+     * @ORM\JoinColumn(name="ID_Currency", referencedColumnName="id", nullable=true)
      */
     private $iDCurrency;
 
@@ -50,9 +50,9 @@ class Policies
     private $policyNumber;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_PolicyHolder", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="PolicyHolders")
+     * @ORM\JoinColumn(name="ID_PolicyHolder", referencedColumnName="id", nullable=true)
      */
     private $iDPolicyHolder;
 

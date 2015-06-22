@@ -16,7 +16,7 @@ class WeightUnit
     /**
      * @var integer
      *
-     * @ORM\Column(name="ID_WeightUnit", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */

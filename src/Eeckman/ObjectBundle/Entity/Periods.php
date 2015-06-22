@@ -16,7 +16,7 @@ class Periods
     /**
      * @var integer
      *
-     * @ORM\Column(name="ID_Period", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */

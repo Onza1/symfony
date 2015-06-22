@@ -22,16 +22,16 @@ class CoveragesTransports
     private $id;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Transport", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Eeckman\TransportsBundle\Entity\Transports")
+     * @ORM\JoinColumn(name="ID_Transport", referencedColumnName="id", nullable=true)
      */
     private $iDTransport;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Coverage", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Coverage")
+     * @ORM\JoinColumn(name="ID_Coverage", referencedColumnName="id", nullable=true)
      */
     private $iDCoverage;
 

@@ -16,7 +16,7 @@ class Artists
     /**
      * @var integer
      *
-     * @ORM\Column(name="ID_Artist", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */

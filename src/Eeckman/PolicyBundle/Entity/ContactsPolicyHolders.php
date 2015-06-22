@@ -22,16 +22,16 @@ class ContactsPolicyHolders
     private $id;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Contact", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Eeckman\UserBundle\Entity\Contacts")
+     * @ORM\JoinColumn(name="ID_Contact", referencedColumnName="id", nullable=true)
      */
     private $iDContact;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_PolicyHolder", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="PolicyHolders")
+     * @ORM\JoinColumn(name="ID_PolicyHolder", referencedColumnName="id", nullable=true)
      */
     private $iDPolicyHolder;
 

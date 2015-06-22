@@ -64,16 +64,16 @@ class contacts
     private $enterpriseNumber;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Language", type="integer")
+     * @ORM\ManyToOne(targetEntity="Languages")
+     * @ORM\JoinColumn(name="ID_Language", referencedColumnName="id")
      */
     private $iDLanguage;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_companyType", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="CompaniesTypes")
+     * @ORM\JoinColumn(name="ID_CompanyType", referencedColumnName="id", nullable=true)
      */
     private $iDCompanyType;
 

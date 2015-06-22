@@ -16,7 +16,7 @@ class PicturesObjects
     /**
      * @var integer
      *
-     * @ORM\Column(name="ID_PictureObject", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -24,14 +24,14 @@ class PicturesObjects
 
     /**
      * @ORM\ManyToOne(targetEntity="Pictures")
-     * @ORM\JoinColumn(name="ID_Picture", referencedColumnName="ID_Picture", nullable=false)
+     * @ORM\JoinColumn(name="ID_Picture", referencedColumnName="id", nullable=false)
      * @Assert\NotBlank()
      */
     private $iDPicture;
 
     /**
      * @ORM\ManyToOne(targetEntity="Objects")
-     * @ORM\JoinColumn(name="ID_Object",referencedColumnName="ID_Object", nullable=false)
+     * @ORM\JoinColumn(name="ID_Object",referencedColumnName="id", nullable=false)
      * @Assert\NotBlank()
      */
     private $iDObject;

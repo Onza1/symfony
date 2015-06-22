@@ -24,24 +24,23 @@ class Users extends BaseUser
     protected $id;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Contact", type="integer")
+     * @ORM\ManyToOne(targetEntity="Contacts")
+     * @ORM\JoinColumn(name="ID_Contact", referencedColumnName="id")
      */
     private $iDContact;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="ID_UserRole", type="integer")
+     * @ORM\ManyToOne(targetEntity="UserRoles")
+     * @ORM\JoinColumn(name="ID_UserRole", referencedColumnName="id")
      */
     private $iDUserRole;
 
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Event", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Eeckman\EventsBundle\Entity\Events")
+     * @ORM\JoinColumn(name="ID_Event", referencedColumnName="id", nullable=true)
      */
     private $iDEvent;
 

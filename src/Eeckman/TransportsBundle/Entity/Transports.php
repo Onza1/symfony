@@ -29,9 +29,9 @@ class Transports
     private $label;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Policy", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Eeckman\PolicyBundle\Entity\Policies")
+     * @ORM\JoinColumn(name="ID_Policy", referencedColumnName="id", nullable=true)
      */
     private $iDPolicy;
 
@@ -64,16 +64,16 @@ class Transports
     private $endDate;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Carrier", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Carriers")
+     * @ORM\JoinColumn(name="ID_Carrier", referencedColumnName="id", nullable=true)
      */
     private $iDCarrier;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Packaging", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Packagings")
+     * @ORM\JoinColumn(name="ID_Packaging", referencedColumnName="id", nullable=true)
      */
     private $iDPackaging;
 

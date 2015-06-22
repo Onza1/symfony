@@ -22,16 +22,16 @@ class CoveragesGuarantees
     private $id;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Guarantee", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Eeckman\PolicyBundle\Entity\Guarantees")
+     * @ORM\JoinColumn(name="ID_Guarantee", referencedColumnName="id", nullable=true)
      */
     private $iDGuarantee;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Coverage", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Coverages")
+     * @ORM\JoinColumn(name="ID_Coverage", referencedColumnName="id", nullable=true)
      */
     private $iDCoverage;
 

@@ -36,9 +36,9 @@ class CoveragesExtensions
     private $endDate;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Coverage", type="integer")
+     * @ORM\ManyToOne(targetEntity="Coverages")
+     * @ORM\JoinColumn(name="ID_Coverage", referencedColumnName="id", nullable=false)
      */
     private $iDCoverage;
 

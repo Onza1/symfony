@@ -36,9 +36,9 @@ class EventExtensions
     private $endDate;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Event", type="integer")
+     * @ORM\ManyToOne(targetEntity="Events")
+     * @ORM\JoinColumn(name="ID_Event", referencedColumnName="id", nullable=false)
      */
     private $iDEvent;
 

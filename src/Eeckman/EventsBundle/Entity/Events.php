@@ -29,16 +29,16 @@ class Events
     private $shortName;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Policy", type="integer")
+     * @ORM\ManyToOne(targetEntity="Eeckman\PolicyBundle\Entity\Policies")
+     * @ORM\JoinColumn(name="ID_Policy", referencedColumnName="id")
      */
     private $iDPolicy;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Adress", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Eeckman\AddressBundle\Entity\Addresses")
+     * @ORM\JoinColumn(name="ID_Address", referencedColumnName="id", nullable=true)
      */
     private $iDAdress;
 
@@ -50,9 +50,9 @@ class Events
     private $logo;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_PolicyHolder", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Eeckman\PolicyBundle\Entity\PolicyHolders")
+     * @ORM\JoinColumn(name="ID_PolicyHolder", referencedColumnName="id", nullable=true)
      */
     private $iDPolicyHolder;
 

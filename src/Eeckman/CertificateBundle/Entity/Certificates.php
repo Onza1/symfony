@@ -29,7 +29,6 @@ class Certificates
     private $creationDate;
 
     /**
-     * @var integer
      *
      * @ORM\ManyToOne(targetEntity="Eeckman\CoverageBundle\Entity\Coverages")
      * @ORM\JoinColumn(name="ID_Coverage", referencedColumnName="id")
@@ -37,7 +36,6 @@ class Certificates
     private $iDCoverage;
 
     /**
-     * @var integer
      *
      * @ORM\ManyToOne(targetEntity="CertificateTypes")
      * @ORM\JoinColumn(name="ID_CertificateType", referencedColumnName="id")
@@ -290,7 +288,6 @@ class Certificates
     private $depth;
 
     /**
-     * @var integer
      *
      * @ORM\ManyToOne(targetEntity="Eeckman\UserBundle\Entity\Users")
      * @ORM\JoinColumn(name="ID_User", referencedColumnName="id")

@@ -22,7 +22,6 @@ class Coverages
     private $id;
 
     /**
-     * @var integer
      *
      * @ORM\ManyToOne(targetEntity="Eeckman\ObjectBundle\Entity\Objects")
      * @ORM\JoinColumn(name="ID_Object", referencedColumnName="id")
@@ -30,7 +29,6 @@ class Coverages
     private $iDObject;
 
     /**
-     * @var integer
      *
      * @ORM\ManyToOne(targetEntity="Eeckman\EventsBundle\Entity\Events")
      * @ORM\JoinColumn(name="ID_Event", referencedColumnName="id")
@@ -38,10 +36,9 @@ class Coverages
     private $iDEvent;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Owner", type="integer", nullable=true)
-     * @ORM\ManyToOne(targetEntity
+     * @ORM\ManyToOne(targetEntity="Eeckman\UserBundle\Entity\Owners")
+     * @ORM\JoinColumn(name="ID_Owner", referencedColumnName="id", nullable=true)
      */
     private $iDOwner;
 
@@ -53,9 +50,9 @@ class Coverages
     private $insuranceValue;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Currency", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Currencies")
+     * @ORM\JoinColumn(name="ID_Currency", referencedColumnName="id", nullable=true)
      */
     private $iDCurrency;
 
@@ -67,9 +64,9 @@ class Coverages
     private $originalInsuranceValue;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="OriginalCurrency", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Currencies")
+     * @ORM\JoinColumn(name="OriginalCurrency", referencedColumnName="id", nullable=true)
      */
     private $originalCurrency;
 
@@ -81,9 +78,9 @@ class Coverages
     private $conversionOriginalDestination;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Policy", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Eeckman\PolicyBundle\Entity\Policies")
+     * @ORM\JoinColumn(name="ID_Policy", referencedColumnName="id", nullable=true)
      */
     private $iDPolicy;
 
@@ -102,9 +99,9 @@ class Coverages
     private $extendedWarrant;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_ValueType", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="ValueTypes")
+     * @JoinColumn(name="ID_ValueType", referencedColumnName="id", nullable=true)
      */
     private $iDValueType;
 

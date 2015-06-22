@@ -36,9 +36,9 @@ class Flights
     private $date;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Transport", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Transports")
+     * @ORM\JoinColumn(name="ID_Transport", referencedColumnName="id", nullable=true)
      */
     private $iDTransport;
 

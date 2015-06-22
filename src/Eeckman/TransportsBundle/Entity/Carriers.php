@@ -36,9 +36,9 @@ class Carriers
     private $shared;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_PolicyHolder", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Eeckman\PolicyBundle\Entity\PolicyHolders")
+     * @ORM\JoinColumn(name="ID_PolicyHolder", referencedColumnName="id", nullable=true)
      */
     private $iDPolicyHolder;
 

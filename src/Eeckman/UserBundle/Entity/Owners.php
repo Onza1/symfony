@@ -22,9 +22,9 @@ class Owners
     private $id;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Contact", type="integer")
+     * @ORM\ManyToOne(targetEntity="Contacts")
+     * @ORM\JoinColumn(name="ID_Contact", referencedColumnName="id")
      */
     private $iDContact;
 

@@ -19,7 +19,7 @@ class Objects
     /**
      * @var integer
      *
-     * @ORM\Column(name="ID_Object", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -170,42 +170,42 @@ class Objects
     /* FOREIGN KEYS  */
     /**
      * @ORM\ManyToOne(targetEntity="Artists")
-     * @ORM\JoinColumn(name="ID_Artist", referencedColumnName="ID_Artist", nullable=true)
+     * @ORM\JoinColumn(name="ID_Artist", referencedColumnName="id", nullable=true)
      */
     private $iDArtist;
 
     /**
      * @ORM\ManyToOne(targetEntity="Materials")
-     * @ORM\JoinColumn(name="ID_Material",referencedColumnName="ID_Material", nullable=true)
+     * @ORM\JoinColumn(name="ID_Material",referencedColumnName="id", nullable=true)
      */
     private $iDMaterial;
 
     /**
      * @ORM\ManyToOne(targetEntity="Object_Types")
-     * @ORM\JoinColumn(name="ID_Object_Type", referencedColumnName="ID_Object_Type", nullable=true)
+     * @ORM\JoinColumn(name="ID_Object_Type", referencedColumnName="id", nullable=true)
      */
     private $iDObjectType;
 
     /**
      * @ORM\ManyToOne(targetEntity="Periods")
-     * @ORM\JoinColumn(name="ID_Period", referencedColumnName="ID_Period", nullable=true)
+     * @ORM\JoinColumn(name="ID_Period", referencedColumnName="id", nullable=true)
      */
     private $iDPeriod;
 
     /**
      * @ORM\ManyToOne(targetEntity="Technics")
-     * @ORM\JoinColumn(name="ID_Technic", referencedColumnName="ID_Technic", nullable=true)
+     * @ORM\JoinColumn(name="ID_Technic", referencedColumnName="id", nullable=true)
      */
     private $iDTechnic;
     /**
      * @ORM\ManyToOne(targetEntity="WeightUnit")
-     * @ORM\JoinColumn(name="ID_WeightUnit", referencedColumnName="ID_WeightUnit", nullable=true)
+     * @ORM\JoinColumn(name="ID_WeightUnit", referencedColumnName="id", nullable=true)
      */
     private $iDWeightUnit;
 
     /**
      * @ORM\ManyToOne(targetEntity="LengthUnit")
-     * @ORM\JoinColumn(name="ID_LengthUnit", referencedColumnName="ID_LengthUnit", nullable=true)
+     * @ORM\JoinColumn(name="ID_LengthUnit", referencedColumnName="id", nullable=true)
      */
     private $iDLengthUnit;
 

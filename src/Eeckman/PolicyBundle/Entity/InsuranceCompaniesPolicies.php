@@ -22,16 +22,16 @@ class InsuranceCompaniesPolicies
     private $id;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_InsuranceCompany", type="integer")
+     * @ORM\ManyToOne(targetEntity="InsuranceCompanies")
+     * @ORM\JoinColumn(name="ID_InsuranceCompany", referencedColumnName="id")
      */
     private $iDInsuranceCompany;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Policy", type="integer")
+     * @ORM\ManyToOne(targetEntity="Policies")
+     * @ORM\JoinColumn(name="ID_Policy", referencedColumnName="id")
      */
     private $iDPolicy;
 

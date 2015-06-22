@@ -22,9 +22,9 @@ class PolicyHolders
     private $id;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Contact", type="integer")
+     * @ORM\ManyToOne(targetEntity="Eeckman\UserBundle\Entity\Contact")
+     * @ORM\JoinColumn(name="ID_Contact", referencedColumnName="id")
      */
     private $iDContact;
 

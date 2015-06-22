@@ -64,7 +64,6 @@ class Addresses
     private $state;
 
     /**
-     * @var integer
      *
      * @ORM\ManyToOne(targetEntity="Countries")
      * @ORM\JoinColumn(name="ID_Country", referencedColumnName="id")
@@ -72,7 +71,6 @@ class Addresses
     private $iDCountry;
 
     /**
-     * @var integer
      *
      * @ORM\ManyToOne(targetEntity="Eeckman\UserBundle\Entity\Contacts")
      * @ORM\JoinColumn(name="ID_Contact", referencedColumnName="id")

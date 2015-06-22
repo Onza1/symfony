@@ -22,16 +22,16 @@ class ContactsOwners
     private $id;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Contact", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Contacts")
+     * @ORM\JoinColumn(name="ID_Contact", referencedColumnName="id", nullable=true)
      */
     private $iDContact;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Owner", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Owners")
+     * @ORM\JoinColumn(name="ID_Owner", referencedColumnName="id", nullable=true)
      */
     private $iDOwner;
 

@@ -16,7 +16,7 @@ class Materials
     /**
      * @var integer
      *
-     * @ORM\Column(name="ID_Material", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */

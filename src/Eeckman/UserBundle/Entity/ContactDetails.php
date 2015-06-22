@@ -36,9 +36,9 @@ class ContactDetails
     private $value;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_ContactType", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="ContactTypes")
+     * @ORM\JoinColumn(name="ID_ContactType", referencedColumnName="id", nullable=true)
      */
     private $iDContactType;
 
@@ -50,9 +50,9 @@ class ContactDetails
     private $principal;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Contact", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Contacts")
+     * @ORM\JoinColumn(name="ID_Contact", referencedColumnName="id", nullable=true)
      */
     private $iDContact;
 

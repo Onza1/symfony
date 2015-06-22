@@ -22,16 +22,16 @@ class Transports_TransportTypes
     private $id;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_TransportType", type="integer")
+     * @ORM\ManyToOne(targetEntity="TransportTypes")
+     * @ORM\JoinColumn(name="ID_TransportType", referencedColumnName="id")
      */
     private $iDTransportType;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="ID_Transport", type="integer")
+     * @ORM\ManyToOne(targetEntity="Transports")
+     * @ORM\JoinColumn(name="ID_Transport", referencedColumnName="id")
      */
     private $iDTransport;
 

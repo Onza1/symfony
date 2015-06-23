@@ -46,21 +46,6 @@ class Users extends BaseUser
 
 
     /**
-     *  User Constructor
-     */
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->iDContact = 1;
-        $this->iDEvent = 1;
-        $this->iDUserRole = 1;
-    }
-
-
-
-
-    /**
      * Get id
      *
      * @return integer 
@@ -109,7 +94,7 @@ class Users extends BaseUser
     /**
      * Get iDUserRole
      *
-     * @return integer 
+     * @return integer
      */
     public function getIDUserRole()
     {

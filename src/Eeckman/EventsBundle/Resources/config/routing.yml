@@ -7,3 +7,9 @@ eeckman_events_details:
     defaults: { _controller: EeckmanEventsBundle:Frontend/Events:detailsEvent }
     requirements:
         page: \+d
+
+
+
+eeckman_events_backend_homepage:
+    path: /backend/events
+    defaults: { _controller: EeckmanEventsBundle:Backend/Events:index }

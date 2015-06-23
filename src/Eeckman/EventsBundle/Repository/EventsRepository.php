@@ -18,8 +18,8 @@ class EventsRepository extends EntityRepository
         return $this->createQueryBuilder('e')
             //->join('e.ID_PolicyHolder', 'u')
             //->where('e.ID_PolicyHolder = :userID')
-            ->where('e.iDPolicyHolder = :userID')
-            ->setParameter('userID', $policyHolder)
+            ->where('e.iDPolicyHolder = :IDPolicyHolder')
+            ->setParameter('IDPolicyHolder', $policyHolder)
             ->getQuery()
             ->getResult();
     }

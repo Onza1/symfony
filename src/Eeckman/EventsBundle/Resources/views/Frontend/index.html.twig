@@ -26,8 +26,19 @@
                         </div>
                         </a>
                     {% endfor %}
+                    {% if entities is empty %}
+                        Vous n'avez pas d'événement à afficher.
+                    {% endif %}
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {{ dump(eventExt) }}
+            <br />
+
         </div>
     </div>
 

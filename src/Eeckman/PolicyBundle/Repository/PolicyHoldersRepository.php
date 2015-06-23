@@ -12,4 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class PolicyHoldersRepository extends EntityRepository
 {
+    public function findByContactID($IDContact)
+    {
+        return $this->createQueryBuilder('e')
+            ->where('e.iDContact = :contactID')
+            ->setParameter('contactID', $IDContact)
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Eeckman\EventsBundle\Entity;
+namespace Eeckman\EventsBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
@@ -12,4 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class EventExtensionsRepository extends EntityRepository
 {
+    public function findByEventID($IDEvent)
+    {
+        return $this->createQueryBuilder('e')
+            ->where('e.iDEvent = :eventID')
+            ->setParameter('eventID', $IDEvent)
+            ->getQuery()
+            ->getResult();
+    }
 }

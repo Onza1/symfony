@@ -5,12 +5,12 @@ namespace Eeckman\UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * contacts
+ * Contacts
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Eeckman\UserBundle\Repository\contactsRepository")
  */
-class contacts
+class Contacts
 {
     /**
      * @var integer

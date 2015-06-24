@@ -80,3 +80,10 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Eeckman\UserBundle\Entity\Users
+
+# JMS Security Conf
+jms_security_extra:
+    secure_all_services: false
+    expressions: true
+
+

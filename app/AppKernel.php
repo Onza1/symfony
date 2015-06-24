@@ -25,6 +25,11 @@ class AppKernel extends Kernel
 
             // FOS User-Bundle
             new FOS\UserBundle\FOSUserBundle(),
+
+            // JMS Security
+            new JMS\AopBundle\JMSAopBundle(),
+            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             // app
             new Eeckman\ObjectBundle\EeckmanObjectBundle(),
             new Eeckman\EventsBundle\EeckmanEventsBundle(),
@@ -34,6 +39,7 @@ class AppKernel extends Kernel
             new Eeckman\CoverageBundle\EeckmanCoverageBundle(),
             new Eeckman\TransportsBundle\EeckmanTransportsBundle(),
             new Eeckman\CertificateBundle\EeckmanCertificateBundle(),
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

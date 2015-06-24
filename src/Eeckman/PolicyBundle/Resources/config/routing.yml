@@ -1,3 +1,4 @@
 eeckman_policy_homepage:
     path:     /hello/{name}
     defaults: { _controller: EeckmanPolicyBundle:Default:index }
+

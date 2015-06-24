@@ -12,8 +12,9 @@ security:
 
 
    firewalls:
+
        main_login:
-           pattern: ^/login$
+           pattern:   ^/(login$|register|resetting)
            anonymous: true
        main:
            pattern: ^/
@@ -23,7 +24,7 @@ security:
                provider: fos_userbundle
                # login success redirecting options (read further below)
                always_use_default_target_path: false
-               default_target_path:            /
+               default_target_path:            /events
                target_path_parameter:          _target_path
                use_referer:                    false
            logout:
@@ -37,7 +38,7 @@ security:
 
 
    access_control:
-       - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-       - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+       - { path: ^/login$, access: "!isAuthenticated()" }
+       - { path: ^/register, access: "!isAuthenticated()" }
        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
        - { path: ^/admin/, role: ROLE_ADMIN }

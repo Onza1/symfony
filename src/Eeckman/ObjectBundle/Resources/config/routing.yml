@@ -1,3 +1,15 @@
 eeckman_object_homepage:
     path:     /hello/{name}
     defaults: { _controller: EeckmanObjectBundle:Default:index }
+
+eeckman_object_addArtist:
+    path:     /addArtist
+    defaults: { _controller: EeckmanObjectBundle:Default:newArtist }
+
+eeckman_object_addPeriod:
+    path:     /addPeriod
+    defaults: { _controller: EeckmanObjectBundle:Default:newPeriod }
+
+eeckman_object_addTechnic:
+    path:     /addTechnic
+    defaults: { _controller: EeckmanObjectBundle:Default:newTechnic }

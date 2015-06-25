@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Eeckman\ObjectBundle\Entity\Artists;
 use Eeckman\ObjectBundle\Entity\LengthUnit;
 use Eeckman\ObjectBundle\Entity\Materials;
-use Eeckman\ObjectBundle\Entity\Object_Types;
+use Eeckman\ObjectBundle\Entity\ObjectTypes;
 use Eeckman\ObjectBundle\Entity\Objects;
 use Eeckman\ObjectBundle\Entity\Periods;
 use Eeckman\ObjectBundle\Entity\Pictures;
@@ -109,4 +109,233 @@ class DefaultController extends Controller
             'form' => $formTechnic->createView(),
         ));
     }
+
+    public function newMaterialAction(Request $request)
+    {
+        $material = new Materials();
+
+        $formMaterial = $this->createFormBuilder($material)
+            ->add('shortName', 'text')
+            ->add('description', 'textarea')
+            ->add('fragile', 'checkbox', array('required' => false))
+            ->add('save', 'submit', array('label' => 'Save Artist'))
+            ->getForm();
+
+        $formMaterial->handleRequest($request);;
+
+        if ($formMaterial->isValid()) {
+            // fait quelque chose comme sauvegarder la tâche dans la bdd
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($material);
+
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('eeckman_events_homepage'));
+        }
+
+        return $this->render('EeckmanObjectBundle:Default:forms.html.twig', array(
+            'form' => $formMaterial->createView(),
+        ));
+    }
+
+    public function newObjectTypeAction(Request $request)
+    {
+        $obj_type = new Object_Types();
+
+        $formObj_type = $this->createFormBuilder($obj_type)
+            ->add('shortName', 'text')
+            ->add('description', 'textarea')
+            ->add('fragile', 'checkbox', array('required' => false))
+            ->add('save', 'submit', array('label' => 'Save Artist'))
+            ->getForm();
+
+        $formObj_type->handleRequest($request);;
+
+        if ($formObj_type->isValid()) {
+            // fait quelque chose comme sauvegarder la tâche dans la bdd
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($obj_type);
+
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('eeckman_events_homepage'));
+        }
+
+        return $this->render('EeckmanObjectBundle:Default:forms.html.twig', array(
+            'form' => $formObj_type->createView(),
+        ));
+    }
+
+    public function newWeightUnitAction(Request $request)
+    {
+        $w_unit = new WeightUnit();
+
+        $formW_unit = $this->createFormBuilder($w_unit)
+            ->add('value', 'text')
+            ->add('save', 'submit', array('label' => 'Save Artist'))
+            ->getForm();
+
+        $formW_unit->handleRequest($request);;
+
+        if ($formW_unit->isValid()) {
+            // fait quelque chose comme sauvegarder la tâche dans la bdd
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($w_unit);
+
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('eeckman_events_homepage'));
+        }
+
+        return $this->render('EeckmanObjectBundle:Default:forms.html.twig', array(
+            'form' => $formW_unit->createView(),
+        ));
+    }
+
+    public function newLengthUnitAction(Request $request)
+    {
+        $l_unit = new LengthUnit();
+
+        $formL_unit = $this->createFormBuilder($l_unit)
+            ->add('value', 'text')
+            ->add('save', 'submit', array('label' => 'Save Artist'))
+            ->getForm();
+
+        $formL_unit->handleRequest($request);;
+
+        if ($formL_unit->isValid()) {
+            // fait quelque chose comme sauvegarder la tâche dans la bdd
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($l_unit);
+
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('eeckman_events_homepage'));
+        }
+
+        return $this->render('EeckmanObjectBundle:Default:forms.html.twig', array(
+            'form' => $formL_unit->createView(),
+        ));
+    }
+
+    public function newPictureAction(Request $request)
+    {
+        $picture = new Pictures();
+
+        $formPicture = $this->createFormBuilder($picture)
+            ->add('file','file')
+            ->add('description', 'text')
+            ->add('save', 'submit', array('label' => 'Save Artist'))
+            ->getForm();
+
+        $formPicture->handleRequest($request);;
+
+        if ($formPicture->isValid()) {
+            // fait quelque chose comme sauvegarder la tâche dans la bdd
+            $em = $this->getDoctrine()->getManager();
+
+            $picture->upload();
+            $em->persist($picture);
+
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('eeckman_events_homepage'));
+        }
+
+        return $this->render('EeckmanObjectBundle:Default:formfile.html.twig', array(
+            'form' => $formPicture->createView(),
+        ));
+    }
+
+    public function showImageAction($id)
+    {
+        $em = $this->getDoctrine()->getManager()->getRepository('EeckmanObjectBundle:Pictures');
+
+        $picture = $em->find($id);
+
+        return $this->render('EeckmanObjectBundle:Default:show.html.twig', array('picture'=> $picture));
+    }
+
+
+
+
+
+
+
+
+
+    /////////////// CREATE OBJECT ///////////////////
+
+    public function newObjectAction()
+    {
+        $object = new Objects();
+
+        $formObject = $this->createFormBuilder($object)
+            ->add('iDArtist', 'entity', array(
+                'class' => 'EeckmanObjectBundle:Artists',
+                'label' => 'Artiste'
+            ))
+            ->add('title','text')
+            ->add('clientRef', 'text')
+            ->add('iDObjectType', 'entity', array(
+                'class' => 'EeckmanObjectBundle:ObjectTypes',
+                'property' => 'shortName',
+                'label' => 'Object Type'
+            ))
+            ->add('iDPeriod', 'entity', array(
+                'class' => 'EeckmanObjectBundle:Periods',
+                'property' => 'shortName',
+                'label' => 'Period'
+            ))
+            ->add('iDTechnic', 'entity', array(
+                'class' => 'EeckmanObjectBundle:Technics',
+                'property' => 'shortName',
+                'label' => 'Technic'
+            ))
+            ->add('iDMaterial', 'entity', array(
+                'class' => 'EeckmanObjectBundle:Materials',
+                'property' => 'shortName',
+                'label' => 'Material'
+            ))
+            ->add('inscriptionsAndMarkings','textarea')
+            ->add('distinguishingFeatures', 'textarea')
+            ->add('subject', 'textarea')
+            ->add('year', 'text')
+            ->add('description', 'textarea')
+            ->add('fragile', 'checkbox', array('required' => false))
+            ->add('selected', 'checkbox', array('required' => false))
+            ->add('received', 'checkbox', array('required' => false))
+            ->add('conditionalReportIn', 'checkbox', array('required' => false))
+            ->add('conditionalReportOut', 'checkbox', array('required' => false))
+            ->add('hung', 'checkbox', array('required' => false))
+            ->add('sent', 'checkbox', array('required' => false))
+            ->add('Receipted', 'checkbox', array('required' => false))
+            ->add('receptionNote', 'checkbox', array('required' => false))
+            ->add('length', 'text')
+            ->add('width', 'text')
+            ->add('depth', 'text')
+            ->add('iDLengthUnit', 'entity', array(
+                'class' => 'EeckmanObjectBundle:LengthUnit',
+                'property' => 'value',
+                'label' => 'Length unit'
+            ))
+            ->add('weight', 'text')
+            ->add('iDWeightUnit', 'entity', array(
+                'class' => 'EeckmanObjectBundle:WeightUnit',
+                'property' => 'value',
+                'label' => 'Weight unit'
+            ))
+            ->add('save', 'submit', array('label' => 'Save Artist'))
+            ->getForm();
+
+        return $this->render('EeckmanObjectBundle:Default:forms.html.twig', array(
+            'form' => $formObject->createView(),
+        ));
+    }
+
+
 }

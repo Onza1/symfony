@@ -152,4 +152,9 @@ class Artists
     {
         return $this->deathDate;
     }
+
+    public function __toString()
+    {
+        return $this->firstName.' '.$this->lastName;
+    }
 }

@@ -6,12 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Object_Types
+ * ObjectTypes
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Eeckman\ObjectBundle\Repository\Object_TypesRepository")
+ * @ORM\Entity(repositoryClass="Eeckman\ObjectBundle\Repository\ObjectTypesRepository")
  */
-class Object_Types
+class ObjectTypes
 {
     /**
      * @var integer
@@ -58,7 +58,7 @@ class Object_Types
      * Set shortName
      *
      * @param string $shortName
-     * @return Object_Types
+     * @return ObjectTypes
      */
     public function setShortName($shortName)
     {

@@ -13,3 +13,31 @@ eeckman_object_addPeriod:
 eeckman_object_addTechnic:
     path:     /addTechnic
     defaults: { _controller: EeckmanObjectBundle:Default:newTechnic }
+
+eeckman_object_addMaterial:
+    path:     /addMaterial
+    defaults: { _controller: EeckmanObjectBundle:Default:newMaterial }
+
+eeckman_object_addObj_type:
+    path:     /addObjType
+    defaults: { _controller: EeckmanObjectBundle:Default:newObjectType }
+
+eeckman_object_addW_unit:
+    path:     /addWeightUnit
+    defaults: { _controller: EeckmanObjectBundle:Default:newWeightUnit }
+
+eeckman_object_addL_unit:
+    path:     /addLengthUnit
+    defaults: { _controller: EeckmanObjectBundle:Default:newLengthUnit }
+
+eeckman_object_addPicture:
+    path:     /addPicture
+    defaults: { _controller: EeckmanObjectBundle:Default:newPicture }
+
+eeckman_object_showPicture:
+    path:     /showImage/{id}
+    defaults: { _controller: EeckmanObjectBundle:Default:showImage }
+
+eeckman_object_addObject:
+    path:     /addObject
+    defaults: { _controller: EeckmanObjectBundle:Default:newObject }

@@ -181,7 +181,7 @@ class Objects
     private $iDMaterial;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Object_Types")
+     * @ORM\ManyToOne(targetEntity="ObjectTypes")
      * @ORM\JoinColumn(name="ID_Object_Type", referencedColumnName="id", nullable=true)
      */
     private $iDObjectType;

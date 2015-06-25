@@ -1,8 +1,9 @@
 {% extends ':Account:layout.html.twig' %}
 {% block title %}Mes événements{% endblock title %}
 {% block body %}
-
+    {{ wo_render_breadcrumbs() }}
     <div class="page-header"><h1>{{ event.shortname }}</h1></div>
+
     <div class="panel panel-default">
         <div class="panel-body">
             <form class="form-horizontal" role="form">
@@ -15,7 +16,10 @@
                 <div class="col-md-3 form-group">
                     <label class="col-md-7 control-label">Extension de garantie</label>
                     <div class="col-md-5">
-                        <input class="form-control" type="checkbox" disabled>
+                        <div class="switch-button sm showcase-switch-button">
+                            <input id="switch-button-2" type="checkbox" disabled>
+                            <label for="switch-button-2"></label>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-3 form-group">
@@ -470,6 +474,23 @@
                         </tr>
                         </tbody>
                     </table>
+                <div class="row row-offset-25">
+                    <div class="col-md-6"><button class="btn btn-default" type="button">Details</button></div>
+                    <div class="col-md-6 text-right">
+                        <button data-original-title="Ajouter une oeuvre" type="button" class="btn btn-default tooltip-btn" data-toggle="tooltip" data-placement="left" title="">+</button>
+                        <button data-original-title="Retirer une oeuvre" type="button" class="btn btn-default tooltip-btn" data-toggle="tooltip" data-placement="left" title="">-</button>
+                    </div>
+                </div>
+                <div class="row row-offset-5">
+                    <div class="col-md-6">
+                        <button class="btn btn-default" type="button">Imprimer la liste des oeuvres</button>
+                        <button class="btn btn-default" type="button">Imprimer les certificats</button>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn btn-default" type="button">Importer les oeuvres</button>
+                        <button class="btn btn-default" type="button">Exporter les oeuvres</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="extensions" class="tab-pane tabs-up fade panel panel-default">
@@ -890,11 +911,65 @@
                     </tr>
                     </tbody>
                 </table>
+                <div class="row row-offset-25">
+                    <div class="col-md-12">
+                        <button class="btn btn-default" type="button">Demander une extension</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="Adresse" class="tab-pane tabs-up fade panel panel-default">
             <div class="panel-body">
-                <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+                <form class="form-horizontal" role="form">
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label class="col-md-5 control-label">Libellé</label>
+                            <div class="col-md-7">
+                                <input class="form-control" type="text" value="{{ event.iDAdress.label }}" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class="col-md-5 control-label">Adresse</label>
+                            <div class="col-md-7">
+                                <input class="form-control" type="text" value="{{ event.iDAdress.addressLine1 }}" disabled />
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class="col-md-5 control-label">Adresse (suite)</label>
+                            <div class="col-md-7">
+                                <input class="form-control" type="text" value="{{ event.iDAdress.addressLine2 }}"disabled />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label class="col-md-5 control-label">Code postal</label>
+                            <div class="col-md-7">
+                                <input class="form-control" type="text" value="{{ event.iDAdress.zipCode }}" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class="col-md-5 control-label">Localité</label>
+                            <div class="col-md-7">
+                                <input class="form-control" type="text" value="{{ event.iDAdress.locality }}" disabled />
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label class="col-md-5 control-label">État</label>
+                            <div class="col-md-7">
+                                <input class="form-control" type="text" value="{{ event.iDAdress.state }}"disabled />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label class="col-md-5 control-label">Pays</label>
+                            <div class="col-md-7">
+                                <input class="form-control" type="text" value="{{ event.iDAdress.iDCountry.nameFR }}" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -903,6 +978,7 @@
     {{ dump(event) }}
     {{ dump(extensions) }}
     {{ dump(user.roles) }}
+    {{ dump(event.iDAdress) }}
 
 
 

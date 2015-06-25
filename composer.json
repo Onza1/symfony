@@ -28,7 +28,9 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "sonata-project/doctrine-extensions": "^1.0",
-        "jms/security-extra-bundle": "~1.5"
+        "jms/security-extra-bundle": "~1.5",
+        "whiteoctober/breadcrumbs-bundle": "dev-master",
+        "knplabs/knp-menu-bundle": "~2"
 
 
 

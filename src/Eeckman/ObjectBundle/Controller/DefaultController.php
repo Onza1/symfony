@@ -31,11 +31,11 @@ class DefaultController extends Controller
             ->add('firstName', 'text')
             ->add('lastName', 'text')
             ->add('birthDate', 'date', array('widget'=> 'single_text'))
-            ->add('deathDate', 'date', array('widget'=> 'single_text'))
+            ->add('deathDate', 'date', array('widget'=> 'single_text', 'required' => false))
             ->add('save', 'submit', array('label' => 'Save Artist'))
             ->getForm();
 
-        $formArtist->handleRequest($request);;
+        $formArtist->handleRequest($request);
 
         if ($formArtist->isValid()) {
             // fait quelque chose comme sauvegarder la tâche dans la bdd
@@ -141,7 +141,7 @@ class DefaultController extends Controller
 
     public function newObjectTypeAction(Request $request)
     {
-        $obj_type = new Object_Types();
+        $obj_type = new ObjectTypes();
 
         $formObj_type = $this->createFormBuilder($obj_type)
             ->add('shortName', 'text')
@@ -260,6 +260,43 @@ class DefaultController extends Controller
         return $this->render('EeckmanObjectBundle:Default:show.html.twig', array('picture'=> $picture));
     }
 
+    public function newObjPicAction(Request $request)
+    {
+        $link = new PicturesObjects();
+
+        $formLink = $this->createFormBuilder($link)
+            ->add('iDPicture', 'entity', array(
+                'class' => 'EeckmanObjectBundle:Pictures',
+                'property' => 'linkToPicture',
+                'label' => 'Image'
+            ))
+            ->add('iDObject', 'entity', array(
+                'class' => 'EeckmanObjectBundle:Objects',
+                'property' => 'title',
+                'label' => 'Objet'
+            ))
+            ->add('save', 'submit', array('label' => 'Save Artist'))
+            ->getForm();
+
+        $formLink->handleRequest($request);;
+
+        if ($formLink->isValid()) {
+            // fait quelque chose comme sauvegarder la tâche dans la bdd
+            $em = $this->getDoctrine()->getManager();
+
+
+            $em->persist($link);
+
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('eeckman_events_homepage'));
+        }
+
+        return $this->render('EeckmanObjectBundle:Default:forms.html.twig', array(
+            'form' => $formLink->createView(),
+        ));
+    }
+
 
 
 
@@ -270,7 +307,7 @@ class DefaultController extends Controller
 
     /////////////// CREATE OBJECT ///////////////////
 
-    public function newObjectAction()
+    public function newObjectAction(Request $request)
     {
         $object = new Objects();
 
@@ -331,6 +368,21 @@ class DefaultController extends Controller
             ))
             ->add('save', 'submit', array('label' => 'Save Artist'))
             ->getForm();
+
+
+
+        $formObject->handleRequest($request);;
+
+        if ($formObject->isValid()) {
+            // fait quelque chose comme sauvegarder la tâche dans la bdd
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($object);
+
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('eeckman_events_homepage'));
+        }
 
         return $this->render('EeckmanObjectBundle:Default:forms.html.twig', array(
             'form' => $formObject->createView(),

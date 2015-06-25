@@ -30,6 +30,13 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
+
+            // White October BreadCrumb
+            new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
+
+            // KNPLabs
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+
             // app
             new Eeckman\ObjectBundle\EeckmanObjectBundle(),
             new Eeckman\EventsBundle\EeckmanEventsBundle(),

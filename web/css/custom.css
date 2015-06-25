@@ -1,4 +1,7 @@
 /* CUSTOM CLASSES */
+
+.row-offset-5{ padding-top:5px;}
+.row-offset-25{ padding-top:25px;}
 .row-offset-100{ padding-top:100px;}
 .row-offset-150{ padding-top:150px;}
 .row-offset-200{ padding-top:200px;}

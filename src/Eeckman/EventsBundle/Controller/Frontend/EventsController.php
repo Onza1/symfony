@@ -21,6 +21,10 @@ class EventsController extends Controller
      */
     public function indexAction()
     {
+        // BreadCrumb
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Événements", $this->get('router')->generate('eeckman_events_homepage'));
+
         // Récupérer le user en cours
         $user = $this->getUser();
 
@@ -50,6 +54,8 @@ class EventsController extends Controller
 
     public function detailsEventAction($idEvent)
     {
+
+
         // Récupérer infos concernant l'event
         $em = $this->getDoctrine()->getManager()->getRepository('EeckmanEventsBundle:Events');
         $event = $em->find($idEvent);
@@ -66,6 +72,12 @@ class EventsController extends Controller
             if($ext->getEndDate() > $event->end) { $event->end = $ext->getEndDate(); }
         }
         $user = $this->getUser();
+
+        // BreadCrumb
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem($event->getShortName(), $this);
+
+
         return $this->render('EeckmanEventsBundle:Frontend:detailsEvent.html.twig', array('event'=> $event, 'extensions' => $extensions, 'user' => $user));
     }
 }

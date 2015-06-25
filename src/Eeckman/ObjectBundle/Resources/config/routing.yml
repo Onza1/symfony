@@ -38,6 +38,10 @@ eeckman_object_showPicture:
     path:     /showImage/{id}
     defaults: { _controller: EeckmanObjectBundle:Default:showImage }
 
+eeckman_object_addObjectPic:
+    path:     /addObjectPic
+    defaults: { _controller: EeckmanObjectBundle:Default:newObjPic }
+
 eeckman_object_addObject:
     path:     /addObject
     defaults: { _controller: EeckmanObjectBundle:Default:newObject }

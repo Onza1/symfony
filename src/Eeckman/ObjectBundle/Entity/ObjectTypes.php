@@ -81,7 +81,7 @@ class ObjectTypes
      * Set description
      *
      * @param string $description
-     * @return Object_Types
+     * @return ObjectTypes
      */
     public function setDescription($description)
     {

@@ -735,10 +735,10 @@ class Objects
     /**
      * Set iDObjectType
      *
-     * @param \Eeckman\ObjectBundle\Entity\Object_Types $iDObjectType
+     * @param \Eeckman\ObjectBundle\Entity\ObjectTypes $iDObjectType
      * @return Objects
      */
-    public function setIDObjectType(\Eeckman\ObjectBundle\Entity\Object_Types $iDObjectType)
+    public function setIDObjectType(\Eeckman\ObjectBundle\Entity\ObjectTypes $iDObjectType)
     {
         $this->iDObjectType = $iDObjectType;
 

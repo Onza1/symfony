@@ -57,3 +57,7 @@
     border-top: 1px solid #ddd;
     margin-top: -1px;
 }
+
+.statut_checkbox .checkbox input[type="checkbox"] {
+    margin-left:20px;
+}

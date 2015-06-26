@@ -45,3 +45,8 @@ eeckman_object_addObjectPic:
 eeckman_object_addObject:
     path:     /addObject
     defaults: { _controller: EeckmanObjectBundle:Default:newObject }
+
+
+eeckman_object_showObject:
+    path:     /object/{idObject}
+    defaults: { _controller: EeckmanObjectBundle:Frontend/Object:index }

@@ -1,0 +1,95 @@
+{% extends ':Account:layout.html.twig' %}
+{% block title %}Oeuvre{% endblock title %}
+{% block body %}
+    <div class="page-header"><h1>Détails de l'oeuvre - {{ object.title }}</h1></div>
+    {{ wo_render_breadcrumbs() }}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id="accordion" class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="#collapseOne" data-target="#collapseOne" data-toggle="collapse">Statut</a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="row">
+                                <form class="form-horizontal" role="form">
+                                    <div class="col-md-12 statut_checkbox">
+                                        <div class="col-md-2 form-group">
+                                            <label class="checkbox">Oeuvre sélectionnée <input type="checkbox" disabled></label>
+                                        </div>
+                                        <div class="col-md-2 form-group">
+                                            <label class="checkbox">Oeuvre reçue <input type="checkbox" disabled></label>
+                                        </div>
+                                        <div class="col-md-2 form-group">
+                                            <label class="checkbox">CR réception réalisé <input type="checkbox" disabled></label>
+                                        </div>
+                                        <div class="col-md-2 form-group">
+                                            <label class="checkbox">Oeuvre installée <input  type="checkbox" disabled></label>
+                                        </div>
+                                        <div class="col-md-2 form-group">
+                                            <label class="checkbox">CR envoi réalisé <input  type="checkbox" disabled></label>
+                                        </div>
+                                        <div class="col-md-2 form-group">
+                                            <label class="checkbox">Oeuvre renvoyée <input  type="checkbox" disabled></label>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="row row-offset-25">
+        <div class="col-md-6">
+            <div id="accordion" class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="#collapseOne" data-target="#collapseOne" data-toggle="collapse">Description et photo de l'oeuvre</a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            {% for item in pictures %}
+                                {% if item.principal == true %}
+                                    <img src="{{ asset(item.iDPicture.linkToPicture) }}" width="120" />
+                                {% endif %}
+                            {% endfor %}
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div id="accordion" class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a href="#collapseOne" data-target="#collapseOne" data-toggle="collapse">Couverture de l'oeuvre</a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+
+                                Desc. couverture
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{{ dump(object) }}
+{{ dump(pictures) }}
+{% endblock %}

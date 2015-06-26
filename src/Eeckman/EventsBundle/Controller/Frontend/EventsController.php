@@ -2,8 +2,10 @@
 
 namespace Eeckman\EventsBundle\Controller\Frontend;
 
+use Eeckman\EventsBundle\Entity\EventExtensions;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Eeckman\EventsBundle\Entity\Events;
+use Symfony\Component\HttpFoundation\Request;
 
 
 /**
@@ -19,7 +21,7 @@ class EventsController extends Controller
      * Affiche la liste des événements d'un preneur d'assurance.
      * Affiche directement les détails d'un événement s'il n'en a qu'un.
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         // BreadCrumb
         $breadcrumbs = $this->get("white_october_breadcrumbs");
@@ -47,12 +49,12 @@ class EventsController extends Controller
             $extensions += $evextm->findByEventID($event->getID());
         }
         if(sizeof($entities) == 1){
-            return $this->detailsEventAction($entities[0]->getID());
+            return $this->detailsEventAction($entities[0]->getID(), $request);
         }
         return $this->render('EeckmanEventsBundle:Frontend:index.html.twig', array('entities' => $entities, 'eventExt' => $extensions));
     }
 
-    public function detailsEventAction($idEvent)
+    public function detailsEventAction($idEvent, Request $request)
     {
 
 
@@ -73,11 +75,38 @@ class EventsController extends Controller
         }
         $user = $this->getUser();
 
+
+        // Récuperer les oeuvres concernées
+        $covm = $this->getDoctrine()->getManager()->getRepository('EeckmanCoverageBundle:Coverages');
+        $coverages = $covm->findBy(array('iDEvent'=> $event->getID()));
         // BreadCrumb
         $breadcrumbs = $this->get("white_october_breadcrumbs");
         $breadcrumbs->addItem($event->getShortName(), $this);
 
+        // Formulaire demande extension
+        $newExtensions = new EventExtensions();
 
-        return $this->render('EeckmanEventsBundle:Frontend:detailsEvent.html.twig', array('event'=> $event, 'extensions' => $extensions, 'user' => $user));
+        $formExt = $this->createFormBuilder($newExtensions)
+            ->add('endDate', 'date', array('widget'=> 'single_text'))
+            ->add('save', 'submit', array('label' => 'Save Artist'))
+            ->getForm();
+
+        $formExt->handleRequest($request);
+
+        if ($formExt->isValid()) {
+            // fait quelque chose comme sauvegarder la tâche dans la bdd
+            $em = $this->getDoctrine()->getManager();
+            $newExtensions->setStartDate($event->start);
+            $newExtensions->setIDEvent($event);
+            $newExtensions->setUserRequest(true);
+            $newExtensions->setValidation(false);
+            $em->persist($newExtensions);
+
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('eeckman_events_homepage'));
+        }
+
+        return $this->render('EeckmanEventsBundle:Frontend:detailsEvent.html.twig', array('event'=> $event, 'extensions' => $extensions, 'coverages' => $coverages, 'extForm' => $formExt->createView(), 'user' => $user));
     }
 }

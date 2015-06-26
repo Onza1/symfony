@@ -16,13 +16,30 @@ class Builder extends ContainerAware
     public function mainMenu(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
+        $menu->setChildrenAttribute('class', 'list-unstyled');
 
-        $menu->addChild('Home', array('route' => 'homepage'));
+        $menu->addChild('Mes événements', array('route' => 'eeckman_events_homepage'))
+            ->setAttribute('icon', 'fa fa-calendar');
+
+
+        // Récupérer le user en cours
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        // Récuper le PolicyHolder correspondant
+        $pm = $this->container->get('doctrine')->getManager()->getRepository('EeckmanPolicyBundle:PolicyHolders');
+        $policyHolder = $pm->findByContactID($user->getIDContact());
 
         // access services from the container!
-        $em = $this->container->get('doctrine')->getManager();
+        $em = $this->container->get('doctrine')->getManager()->getRepository('EeckmanEventsBundle:Events');
         // findMostRecent and Blog are just imaginary examples
-        //$blog = $em->getRepository('AppBundle:Blog')->findMostRecent();
+        $events = $em->findByPolicyHolder($policyHolder);
+
+        $menu['Mes événements']->setChildrenAttribute('class','list-unstyled');
+        foreach($events as $item)
+        {
+            $menu['Mes événements']->addChild($item->getShortName(), array('route' => 'eeckman_events_details', 'routeParameters' => array('idEvent' => $item->getId())));
+            //$menu['Mes événements']->addChild('toto', array('route' => 'eeckman_events_homepage'));
+        }
 
         //$menu->addChild('Latest Blog Post', array(
         //    'route' => 'blog_show',

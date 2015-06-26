@@ -1,7 +1,7 @@
 {% extends 'knp_menu.html.twig' %}
 
 {% block item %}
-    TOTO
+
     {% import "knp_menu.html.twig" as macros %}
     {% if item.displayed %}
         {%- set attributes = item.attributes %}
@@ -63,6 +63,7 @@
             {{ block('dividerElement') }}
         {%- endif %}
     {% endif %}
+
 {% endblock %}
 
 {% block dividerElement %}
@@ -104,6 +105,8 @@
         {{ block('label') }}
         <b class="caret"></b>
     </a>
+
+
 {% endblock %}
 
 {% block label %}{{ item.label|trans }}{% endblock %}
